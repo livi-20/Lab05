@@ -56,6 +56,21 @@ int push(DynArray *arr, int valor) {
     return 0;
 }
 
+int remove_at(DynArray *arr, size_t index){
+    if (arr == NULL) {
+        return -1;
+    }
+    if (index >= arr->size) {
+        return -1;
+    }
+    for (size_t i = index; i + 1 < arr->size; i++) {
+        arr->data[i] = arr->data[i + 1];
+    }
+
+    arr->size--;
+    return 0;
+}
+
 int get(const DynArray *arr, size_t index, int *out){
     if (arr == NULL) {
         return -1;

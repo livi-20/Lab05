@@ -16,6 +16,8 @@ int push(DynArray *arr, int valor);
 
 int remove_at(DynArray *arr, size_t index);
 
+int get(const DynArray *arr, size_t index, int *out);
+
 void print(const DynArray *arr);
 
 #endif

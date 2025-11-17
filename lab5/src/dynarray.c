@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "dynarray.h"
 
-Dynarray *crear_dyn(size_t inicial) {
-    Dynarray *arr = malloc(sizeof(Dynarray));
+DynArray *crear_dyn(size_t inicial) {
+    DynArray *arr = malloc(sizeof(DynArray));
     if (arr == NULL) {
         return NULL;
     }
@@ -20,12 +20,12 @@ Dynarray *crear_dyn(size_t inicial) {
     }
 
     arr->size = 0;
-    arr->capacidad = inicial
+    arr->capacidad = inicial;
 
     return arr;
 }
 
-void destroy(Dynarray *arr) {
+void destroy(DynArray *arr) {
     if (arr == NULL) {
         return;
     }
@@ -35,7 +35,7 @@ void destroy(Dynarray *arr) {
     free(arr);
 }
 
-int push(Dynarray *arr, int valor) {
+int push(DynArray *arr, int valor) {
     if (arr == NULL) {
         return -1;
     }
@@ -51,12 +51,12 @@ int push(Dynarray *arr, int valor) {
         arr->capacidad = new_capacidad;
     }
 
-    arr->[arr->size] = valor;
+    arr->data[arr->size] = valor;
     arr->size++;
     return 0;
 }
 
-int remove(Dynarray *arr, size_t index){
+int get(const DynArray *arr, size_t index, int *out){
     if (arr == NULL) {
         return -1;
     }
@@ -65,7 +65,7 @@ int remove(Dynarray *arr, size_t index){
         return -1;
     }
 
-    for (size_t = index; i + 1 < arr->size; i++) {
+    for (size_t i = index; i + 1 < arr->size; i++) {
         arr->data[i] = arr->data[i+1];
     }
 
@@ -77,7 +77,7 @@ int remove(Dynarray *arr, size_t index){
     return 0;
 }
 
-void print(const Dynarray *arr) {
+void print(const DynArray *arr) {
     if (arr == NULL) {
         printf("[]\n");
         return;

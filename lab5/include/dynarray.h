@@ -1,4 +1,4 @@
-#ifnded DYNARRAY_H
+#ifndef DYNARRAY_H
 #define DYNARRAY_H
 #include <stddef.h>
 
@@ -14,7 +14,7 @@ void destroy(DynArray *arr);
 
 int push(DynArray *arr, int valor);
 
-int remove(DynArray *arr, size_t index);
+int remove_at(DynArray *arr, size_t index);
 
 void print(const DynArray *arr);
 
